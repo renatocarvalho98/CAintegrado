@@ -16,10 +16,10 @@ public class Mammal extends Animal{
     // with the parent class attributes
     
     // Create a Dog name: Flix,    2,         12.5,         Home 
-    public Mammal(String name, int age, double weight, String habitat){
-            
-            // we want to send this back to the parent 
-            super(name, age, weight, habitat);
-    }
+    public Mammal (String name, int age, double weight, String habitat, String behavior, String dietType, String isFertile, String isEndangered, String origin){
+        super(name, age, weight, habitat, behavior, dietType, isFertile, isEndangered, origin);
+   }
+
+
 
 }

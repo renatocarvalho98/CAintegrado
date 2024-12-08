@@ -4,6 +4,7 @@
  */
 package zoo;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -23,11 +24,13 @@ public class ZooImp implements Zoo{
         
     this.animals = new ArrayList<>();
      // populate the collection with initial records    
-    animals.add(new Mammal("Lion", 12, 200, "Jungle"));
-    animals.add(new Bird("Eagle", 5, 9,"Trees"));
-    animals.add(new Fish("Baby Shark", 2,3,"Ocean"));
+    animals.add(new Mammal("Lion", 12, 200, "Jungle", "Wild","Carnivore","Yes", "No" , "Africa"));
+    animals.add(new Bird("Eagle", 5, 9,"Trees", "Wild", "Carnivore", "No", "No" , "EUA"));
+    animals.add(new Fish("Baby Shark", 2,3,"Ocean", "Wild", "Carnivore", "Yes", "No" , "Japan"));
     
     }
+
+
 
     
    // list all animals 
@@ -53,14 +56,25 @@ public class ZooImp implements Zoo{
                     System.out.println("Name: " + mammal.getName());
                     System.out.println("Age: " + mammal.getAge());
                     System.out.println("Weight: " + mammal.getWeight());
-                    System.out.println("Habitat: " + mammal.getHabitat());   
+                    System.out.println("Habitat: " + mammal.getHabitat());
+                    System.out.println("Behavior: " + mammal.getBehavior());
+                    System.out.println("Diet Type: " + mammal.getDietType());
+                    System.out.println("Is Fertile: " + mammal.getIsFertile());
+                    System.out.println("Is Endangered: " + mammal.getIsEndangered());
+                    System.out.println("Origin: " + mammal.getOrigin());
+
             }else if(animal instanceof Fish){
                     Fish fish = (Fish) animal;
                     System.out.println("Type: Fish");
                     System.out.println("Name: " + fish.getName());
                     System.out.println("Age: " + fish.getAge());
                     System.out.println("Weight: " + fish.getWeight());
-                    System.out.println("Habitat: " + fish.getHabitat()); 
+                    System.out.println("Habitat: " + fish.getHabitat());
+                    System.out.println("Behavior: " + fish.getBehavior());
+                    System.out.println("Diet Type: " + fish.getDietType());
+                    System.out.println("Is Fertile: " + fish.getIsFertile());
+                    System.out.println("Is Endangered: " + fish.getIsEndangered());
+                    System.out.println("Origin: " + fish.getOrigin());
             
             } else if (animal instanceof Bird){
             
@@ -69,12 +83,20 @@ public class ZooImp implements Zoo{
                     System.out.println("Name: " + bird.getName());
                     System.out.println("Age: " + bird.getAge());
                     System.out.println("Weight: " + bird.getWeight());
-                    System.out.println("Habitat: " + bird.getHabitat()); 
+                    System.out.println("Habitat: " + bird.getHabitat());
+                    System.out.println("Behavior: " + bird.getBehavior());
+                    System.out.println("Diet Type: " + bird.getDietType());
+                    System.out.println("Is Fertile: " + bird.getIsFertile());
+                    System.out.println("Is Endangered: " + bird.getIsEndangered());
+                    System.out.println("Origin: " + bird.getOrigin());
             } 
             System.out.println("-----------------------");              
           }
     }
-    
+
+
+
+    //AQUI VAMOS TER QUE MUDAR PARA CRIAR O NOVO HASHMAP E NOVOS TIPOS
     @Override
     public void listAllTypes(){
         
@@ -89,7 +111,8 @@ public class ZooImp implements Zoo{
         List<Mammal> mammals = new ArrayList<>();
         List<Bird> birds = new ArrayList<>();
         List<Fish> fish = new ArrayList<>();
-        
+
+
         // iterate and populate 
         for(Animal animal: animals){
         
@@ -107,13 +130,14 @@ public class ZooImp implements Zoo{
         System.out.println("Mammals: " + mammals.size());
         System.out.println("Fish: " + fish.size());
         System.out.println("Bird: " + birds.size());
+
         System.out.println("--------------------\n");
         
     }
     
     
     @Override    
-//                        Animal(String name, int age, double weight, String habitat)
+//
     public void addAnimal(Animal animal){
     
         animals.add(animal);
@@ -147,7 +171,13 @@ public class ZooImp implements Zoo{
                     System.out.println("Name: " + mammal.getName());
                     System.out.println("Age: " + mammal.getAge());
                     System.out.println("Weight: " + mammal.getWeight());
-                    System.out.println("Habitat: " + mammal.getHabitat());   
+                    System.out.println("Habitat: " + mammal.getHabitat());
+                    System.out.println("Behavior: " + mammal.getBehavior());
+                    System.out.println("Diet Type: " + mammal.getDietType());
+                    System.out.println("Is Fertile: " + mammal.getIsFertile());
+                    System.out.println("Is Endangered: " + mammal.getIsEndangered());
+                    System.out.println("Origin: " + mammal.getOrigin());
+
             }else if(animal instanceof Fish){
                     Fish fish = (Fish) animal;
                     System.out.println("Type: Fish");
@@ -155,7 +185,11 @@ public class ZooImp implements Zoo{
                     System.out.println("Age: " + fish.getAge());
                     System.out.println("Weight: " + fish.getWeight());
                     System.out.println("Habitat: " + fish.getHabitat()); 
-            
+                    System.out.println("Behavior: " + fish.getBehavior());
+                    System.out.println("Diet Type: " + fish.getDietType());
+                    System.out.println("Is Fertile: " + fish.getIsFertile());
+                    System.out.println("Is Endangered: " + fish.getIsEndangered());
+                    System.out.println("Origin: " + fish.getOrigin());
             } else if (animal instanceof Bird){
             
                     Bird bird = (Bird) animal;
@@ -163,7 +197,12 @@ public class ZooImp implements Zoo{
                     System.out.println("Name: " + bird.getName());
                     System.out.println("Age: " + bird.getAge());
                     System.out.println("Weight: " + bird.getWeight());
-                    System.out.println("Habitat: " + bird.getHabitat()); 
+                    System.out.println("Habitat: " + bird.getHabitat());
+                    System.out.println("Behavior: " + bird.getBehavior());
+                    System.out.println("Diet Type: " + bird.getDietType());
+                    System.out.println("Is Fertile: " + bird.getIsFertile());
+                    System.out.println("Is Endangered: " + bird.getIsEndangered());
+                    System.out.println("Origin: " + bird.getOrigin());
             } 
             System.out.println("-----------------------");              
   
@@ -234,18 +273,18 @@ public class ZooImp implements Zoo{
                 switch(type){
                 // if 1. We add a Mammal               
                     case 1:
-                        System.out.println("Please provide the Mammal (Name, Age, Weight, Habitat)");
+                        System.out.println("Please provide the Mammal (Name, Age, Weight, Habitat, behavior, dietType, isFertile, isEndangered, origin)");
 //                        Take the user input and store it in a string array []
 //                        The data structure is a CSV comma seperated 
 //                        userinput = "Lion, 12, 120, Jungle"
 //                        Specify the delim using split() == ,
-//                        make it a string array = ["Lion", "12", "120", "Jungle"]
+//                        make it a string array = ["Lion", "12", "120", "Jungle" , "]
 //                                                   1        2     3        4
 //                        String[] mammalDetails = ["Lion", "12", "120", "Jungle"]
                         scanner.nextLine();
                         String[] mammalDetails = scanner.nextLine().split(",");
 //                        System.out.println("printing split" + mammalDetails);
-                        if (mammalDetails.length == 4){
+                        if (mammalDetails.length == 9){
 //                            System.out.println("printing split" + mammalDetails);
 //                            do this because we have 4 fields 
 //                            mammalDetails = ["Lion", "12", "120", "Jungle"]
@@ -264,7 +303,14 @@ public class ZooImp implements Zoo{
                                                     mammalDetails[0].trim(), // Name 
                                                     Integer.parseInt(mammalDetails[1].trim()), // Age
                                                     Double.parseDouble(mammalDetails[2].trim()), // Weight
-                                                    mammalDetails[3].trim() // Habitat
+                                                    mammalDetails[3].trim(), // habitat
+                                                    mammalDetails[4].trim(),  // behaver
+                                                    mammalDetails[5].trim(),   // DIET
+                                                    mammalDetails[6].trim(),   // Fertile
+                                                    mammalDetails[7].trim(),    // Endangered
+                                                    mammalDetails[8].trim()     // ORIGEN
+
+                                                    // Habitat
                                             ));
                                 }else{
 //                                    If the input is mismatching the type of value 
@@ -274,7 +320,7 @@ public class ZooImp implements Zoo{
                         }else{
                             System.out.println("Invalid Input!");
                             System.out.println("Please make sure to use a comma seperated format");
-                            System.out.println("Name, Age, Weight, Habitat");
+                            System.out.println("Name, Age, Weight, Habitat, Habitat, behavior, dietType, isFertile, isEndangered, origin");
                         } 
                     break;
                     case 2:
@@ -289,7 +335,7 @@ public class ZooImp implements Zoo{
                         scanner.nextLine();
                         String[] fishDetails = scanner.nextLine().split(",");
 //                        System.out.println("printing split" + mammalDetails);
-                        if (fishDetails.length == 4){
+                        if (fishDetails.length == 9){
 //                            System.out.println("printing split" + mammalDetails);
 //                            do this because we have 4 fields 
 //                            mammalDetails = ["Lion", "12", "120", "Jungle"]
@@ -308,7 +354,12 @@ public class ZooImp implements Zoo{
                                                     fishDetails[0].trim(), // Name 
                                                     Integer.parseInt(fishDetails[1].trim()), // Age
                                                     Double.parseDouble(fishDetails[2].trim()), // Weight
-                                                    fishDetails[3].trim() // Habitat
+                                                    fishDetails[3].trim(),// habitat
+                                                    fishDetails[4].trim(),  // behaver
+                                                    fishDetails[5].trim(),   // DIET
+                                                    fishDetails[6].trim(),   // Fertile
+                                                    fishDetails[7].trim(),    // Endangered
+                                                    fishDetails[8].trim()     // ORIGEN// Habitat
                                             ));
                                 }else{
 //                                    If the input is mismatching the type of value 
@@ -318,11 +369,11 @@ public class ZooImp implements Zoo{
                         }else{
                             System.out.println("Invalid Input!");
                             System.out.println("Please make sure to use a comma seperated format");
-                            System.out.println("Name, Age, Weight, Habitat");
+                            System.out.println("Name, Age, Weight, Habitat, Habitat, behavior, dietType, isFertile, isEndangered, origin");
                         } 
                     break;
                     case 3:
-                        System.out.println("Please provide the Bird (Name, Age, Weight, Habitat)");
+                        System.out.println("Please provide the Bird (Name, Age, Weight, behavior, dietType, isFertile, isEndangered, origin)");
 //                        Take the user input and store it in a string array []
 //                        The data structure is a CSV comma seperated 
 //                        userinput = "Lion, 12, 120, Jungle"
@@ -333,7 +384,7 @@ public class ZooImp implements Zoo{
                         scanner.nextLine();
                         String[] birdDetails = scanner.nextLine().split(",");
 //                        System.out.println("printing split" + mammalDetails);
-                        if (birdDetails.length == 4){
+                        if (birdDetails.length == 9){
 //                            System.out.println("printing split" + mammalDetails);
 //                            do this because we have 4 fields 
 //                            mammalDetails = ["Lion", "12", "120", "Jungle"]
@@ -352,7 +403,12 @@ public class ZooImp implements Zoo{
                                                     birdDetails[0].trim(), // Name 
                                                     Integer.parseInt(birdDetails[1].trim()), // Age
                                                     Double.parseDouble(birdDetails[2].trim()), // Weight
-                                                    birdDetails[3].trim() // Habitat
+                                                    birdDetails[3].trim(),
+                                                    birdDetails[4].trim(),  // behaver
+                                                    birdDetails[5].trim(),   // DIET
+                                                    birdDetails[6].trim(),   // Fertile
+                                                    birdDetails[7].trim(),    // Endangered
+                                                    birdDetails[8].trim()// Habitat
                                             ));
                                 }else{
 //                                    If the input is mismatching the type of value 
