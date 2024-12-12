@@ -84,6 +84,8 @@ public class ZooImp implements Zoo {
         }
     }
 
+
+
     public static void main(String[] args) {
         ZooImp zoo = new ZooImp();
         Scanner scanner = new Scanner(System.in);
@@ -111,15 +113,30 @@ public class ZooImp implements Zoo {
                     scanner.nextLine(); //
                     String type = scanner.nextLine();
 
+
+
+                //AQUI FOI MEXIDO NO CODIGO PARA CRIAR NOVO TIPO DE ANIMAL
+                // PARA SAI
                     if (!zoo.animalCategories.containsKey(type)) {
-                        System.out.println("Type does not exist. Do you want to create it? (yes/no)");
-                        if (scanner.nextLine().equalsIgnoreCase("yes")) {
-                            zoo.addNewAnimalType(type);
-                        } else {
-                            System.out.println("Animal type creation cancelled.");
-                            break;
-                        }
+                        String response = "";
+                        do {
+                            System.out.println("Type does not exist. Do you want to create it? (yes/no)");
+                            response = scanner.nextLine().trim().toLowerCase();
+
+                            if (response.equals("yes")) {
+                                zoo.addNewAnimalType(type);
+                                break;
+                            } else if (response.equals("no")) {
+                                System.out.println("Animal type creation cancelled.");
+                                return;
+                            } else {
+                                System.out.println("Invalid input! Please type 'yes' or 'no'.");
+                            }
+                        } while (!response.equals("yes") && !response.equals("no"));
                     }
+
+
+
 
                     System.out.println("Enter animal details (Name, Age, Weight, Habitat, Behavior, Diet , Fertile, Endangered, Origin):");
                     String[] details = scanner.nextLine().split(",");
@@ -142,6 +159,8 @@ public class ZooImp implements Zoo {
                     } else {
                         System.out.println("Invalid input format! Please ensure you provide all 9 attributes separated by commas.");
                     }
+
+
                 }
                 case RANDOM_ANIMAL -> zoo.getRandom();
                 case EXIT -> System.out.println("Exiting...");
