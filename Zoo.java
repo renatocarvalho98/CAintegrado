@@ -24,5 +24,8 @@ public interface Zoo {
 
     void addNewAnimalType(String type);
 
+
+    //here we add new animal type to zoo, new category of animals.
+    //this methodo will show up when we open at ADD_ANIMAL, if we chose to input new animal type
     void addAnimalToType(String type, Animal animal, boolean showMessage);
 }

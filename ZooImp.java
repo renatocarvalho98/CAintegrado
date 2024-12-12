@@ -95,6 +95,7 @@ public class ZooImp implements Zoo {
                 System.out.println(option.ordinal() + 1 + ". " + option.name());
             }
 
+            try {
             int option = scanner.nextInt();
             if (option < 1 || option > MenuOptions.values().length) {
                 System.out.println("Invalid option!");
@@ -106,8 +107,8 @@ public class ZooImp implements Zoo {
                 case LIST_ANIMALS -> zoo.listAllAnimals();
                 case LIST_TYPES -> zoo.listAllTypes();
                 case ADD_ANIMAL -> {
-                    System.out.println("Enter the type of animal (e.g., Mammal, Bird, Reptile):");
-                    scanner.nextLine(); // Limpar buffer
+                    System.out.println("Enter the type of animal (e.g., Mammal, Bird, Fish):");
+                    scanner.nextLine(); //
                     String type = scanner.nextLine();
 
                     if (!zoo.animalCategories.containsKey(type)) {
@@ -120,20 +121,35 @@ public class ZooImp implements Zoo {
                         }
                     }
 
-                    System.out.println("Enter animal details (Name, Age, Weight, Habitat, Behavior, DietType, IsFertile, IsEndangered, Origin):");
+                    System.out.println("Enter animal details (Name, Age, Weight, Habitat, Behavior, Diet , Fertile, Endangered, Origin):");
                     String[] details = scanner.nextLine().split(",");
                     if (details.length == 9) {
-                        Animal newAnimal = new Animal(details[0].trim(), Integer.parseInt(details[1].trim()),
-                                Double.parseDouble(details[2].trim()), details[3].trim(), details[4].trim(),
-                                details[5].trim(), Boolean.parseBoolean(details[6].trim()),
-                                Boolean.parseBoolean(details[7].trim()), details[8].trim());
+                        try {
+                        Animal newAnimal = new Animal(details[0].trim(),
+                                Integer.parseInt(details[1].trim()),
+                                Double.parseDouble(details[2].trim()),
+                                details[3].trim(),
+                                details[4].trim(),
+                                details[5].trim(),
+                                Boolean.parseBoolean(details[6].trim()),
+                                Boolean.parseBoolean(details[7].trim()),
+                                details[8].trim());
                         zoo.addAnimalToType(type, newAnimal, true);
+                        } catch (NumberFormatException e) {
+                            System.out.println("Invalid number format in input! Please try again.\"");
+                        }
+
                     } else {
-                        System.out.println("Invalid input format!");
+                        System.out.println("Invalid input format! Please ensure you provide all 9 attributes separated by commas.");
                     }
                 }
                 case RANDOM_ANIMAL -> zoo.getRandom();
                 case EXIT -> System.out.println("Exiting...");
+
+            }
+            } catch (Exception e) {
+                System.out.println("Invalid input! Please enter a number corresponding to the menu options.");
+                scanner.nextLine();
             }
         } while (choice != MenuOptions.EXIT);
     }

@@ -10,6 +10,8 @@ public class Animal {
     private double weight;
     private String habitat;
     private String behavior;
+
+    //more attributes that we creat about animal in general
     private String dietType;
     private boolean isFertile;
     private boolean isEndangered;
