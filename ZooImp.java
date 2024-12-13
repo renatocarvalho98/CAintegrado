@@ -30,6 +30,23 @@ public class ZooImp implements Zoo {
                 System.out.println(animal.getName() + " (" + type + ")");
             }
         }
+
+
+        //to show all details about the animals
+        System.out.println("----------------------------------");
+        System.out.println("\nDetailed Animal Information:");
+        for (Animal animal : animals) {
+            System.out.println(animal.getName() + " (" + animal.getClass().getSimpleName() + ")");
+            System.out.println("Age: " + animal.getAge());
+            System.out.println("Weight: " + animal.getWeight());
+            System.out.println("Habitat: " + animal.getHabitat());
+            System.out.println("Behavior: " + animal.getBehavior());
+            System.out.println("Diet Type: " + animal.getDietType());
+            System.out.println("Fertile: " + animal.isFertile());
+            System.out.println("Endangered: " + animal.isEndangered());
+            System.out.println("Origin: " + animal.getOrigin());
+            System.out.println("----------------------------------");
+        }
     }
 
     @Override
@@ -119,27 +136,45 @@ public class ZooImp implements Zoo {
                 // PARA SAI
                     if (!zoo.animalCategories.containsKey(type)) {
                         String response = "";
-                        do {
+                        int check = 0;
+                        while (true) {
                             System.out.println("Type does not exist. Do you want to create it? (yes/no)");
                             response = scanner.nextLine().trim().toLowerCase();
 
+
                             if (response.equals("yes")) {
                                 zoo.addNewAnimalType(type);
-                                break;
+                                check = 0;
+                                break; //
                             } else if (response.equals("no")) {
                                 System.out.println("Animal type creation cancelled.");
-                                return;
+                                 check = 1;
+                                break; //
+
                             } else {
                                 System.out.println("Invalid input! Please type 'yes' or 'no'.");
                             }
-                        } while (!response.equals("yes") && !response.equals("no"));
+                        }
+
+                        //Basic is when stop looping with No, the IF check break is 1, making back to menu,
+                        //when yes, check is 0 so just go for next one
+                        if (check == 1) {
+                            break;
+
+                        }
+
+
                     }
 
 
-
-
+                    boolean valid = false;
+                    do {
                     System.out.println("Enter animal details (Name, Age, Weight, Habitat, Behavior, Diet , Fertile, Endangered, Origin):");
                     String[] details = scanner.nextLine().split(",");
+
+
+
+
                     if (details.length == 9) {
                         try {
                         Animal newAnimal = new Animal(details[0].trim(),
@@ -152,13 +187,18 @@ public class ZooImp implements Zoo {
                                 Boolean.parseBoolean(details[7].trim()),
                                 details[8].trim());
                         zoo.addAnimalToType(type, newAnimal, true);
+                        valid = true;
                         } catch (NumberFormatException e) {
                             System.out.println("Invalid number format in input! Please try again.\"");
+                        }catch (Exception e) {
+                            System.out.println("An unexpected error occurred: " + e.getMessage());
                         }
 
                     } else {
                         System.out.println("Invalid input format! Please ensure you provide all 9 attributes separated by commas.");
+
                     }
+                }while (!valid);
 
 
                 }
