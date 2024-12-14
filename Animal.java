@@ -5,7 +5,7 @@
 package zoo;
 
 public class Animal {
-    private String name;
+    private String species;
     private int age;
     private double weight;
     private String habitat;
@@ -17,8 +17,20 @@ public class Animal {
     private boolean isEndangered;
     private String origin;
 
-    public Animal(String name, int age, double weight, String habitat, String behavior, String dietType,
-                  boolean isFertile, boolean isEndangered, String origin) {
+    //ID to track the animal, local to know where the animals goes in the zoo
+    //animal species also, name to species and name will be to name of animal
+    private int ID_animal;
+    private String name;
+    private String localZOO;
+
+
+    // ID to track the animal
+    private static int currentID = 1;
+
+    public Animal(String species,String name, int age, double weight, String habitat, String behavior, String dietType,
+                  boolean isFertile, boolean isEndangered, String origin, String localZOO) {
+
+        this.species = species;
         this.name = name;
         this.age = age;
         this.weight = weight;
@@ -28,11 +40,13 @@ public class Animal {
         this.isFertile = isFertile;
         this.isEndangered = isEndangered;
         this.origin = origin;
+        this.ID_animal = currentID++;
+        this.localZOO = localZOO;
     }
 
     // Getters and Setters
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public String getSpecies() { return species; }
+    public void setSpecies(String species) { this.species = species; }
     public int getAge() { return age; }
     public void setAge(int age) { this.age = age; }
     public double getWeight() { return weight; }
@@ -49,4 +63,13 @@ public class Animal {
     public void setEndangered(boolean endangered) { isEndangered = endangered; }
     public String getOrigin() { return origin; }
     public void setOrigin(String origin) { this.origin = origin; }
+
+
+    //add new get sett
+    public int getID_animal() { return ID_animal; }
+    public void setID_animal(int ID_animal) { this.ID_animal = ID_animal; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public String getLocalZOO() { return localZOO; }
+    public void setLocalZOO(String localZOO) { this.localZOO = localZOO; }
 }

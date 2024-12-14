@@ -8,9 +8,9 @@ public class Mammal extends Animal {
 
 
 
-    public Mammal(String name, int age, double weight, String habitat, String behavior, String dietType,
-                  boolean isFertile, boolean isEndangered, String origin) {
-        super(name, age, weight, habitat, behavior, dietType, isFertile, isEndangered, origin);
+    public Mammal(String species,String name, int age, double weight, String habitat, String behavior, String dietType,
+                  boolean isFertile, boolean isEndangered, String origin, String localZOO) {
+        super(species,name, age, weight, habitat, behavior, dietType, isFertile, isEndangered, origin, localZOO);
     }
 
 

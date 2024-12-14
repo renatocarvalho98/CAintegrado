@@ -1,0 +1,18 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package zoo;
+
+public class Mammal extends Animal {
+
+
+
+    public Mammal(String species, int age, double weight, String habitat, String behavior, String dietType,
+                  boolean isFertile, boolean isEndangered, String origin, int ID_animal, String name, String localZOO) {
+        super(name, age, weight, habitat, behavior, dietType, isFertile, isEndangered, origin, ID_animal, species, localZOO);
+    }
+
+
+
+}

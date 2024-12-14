@@ -17,9 +17,9 @@ public class ZooImp implements Zoo {
     }
 
     private void addPredefinedAnimals() {
-        addAnimalToType("Mammal", new Mammal("Lion", "King", 5, 200, "Savannah", "Predatory", "Carnivore", true, false, "Africa", "Place 2A"), false);
-        addAnimalToType("Bird", new Bird("Parrot", "Polly", 3, 0.5, "Tropical Forest", "Social", "Omnivore", true, false, "South America", "Place 1A"), false);
-        addAnimalToType("Fish", new Fish("Goldfish", "Nemo", 1, 0.1, "Freshwater", "Swimming", "Carnivore", true, false, "North America", "Place 3A"), false);
+        addAnimalToType("Mammal", new Mammal("Lion", 12, 200, "Jungle", "Aggressive", "Carnivore", true, false, "Africa", 1, "King", "Place 3A"), false);
+        addAnimalToType("Bird", new Bird("Eagle", 5, 9, "Trees", "Majestic", "Carnivore", false, false, "North America", 2, "Bart", "Place 4A"), false);
+        addAnimalToType("Fish", new Fish("Shark", 7, 500, "Ocean", "Predatory", "Carnivore", true, false, "Pacific Ocean",  3, "Piranho", "Place 7A"), false);
     }
 
 
