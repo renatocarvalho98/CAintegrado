@@ -1,3 +1,8 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
 package zoo.EmployeeSettings;
 
 public class Employee {
@@ -65,5 +70,3 @@ public class Employee {
         public String getEmploymentDate() { return employmentDate; }
         public void setEmploymentDate(String employmentDate) { this.employmentDate = employmentDate; }
     }
-
-
