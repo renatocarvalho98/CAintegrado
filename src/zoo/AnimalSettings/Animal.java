@@ -1,15 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package zoo.AnimalSettings;
+
+import java.util.HashMap;
 
 public class Animal {
     private static int currentID = 1; // Auto-increment ID
-
-    public static void setCurrentID(int aCurrentID) {
-        currentID = aCurrentID;
-    }
     private int id;
     private String species;
     private String name;
@@ -22,9 +16,11 @@ public class Animal {
     private boolean isEndangered;
     private String origin;
     private String zooLocation;
-    private boolean isSick; // Indicates if the animal is sick
+    private boolean isSick;
 
-    // Constructor
+    // HashMap for custom dynamic attributes
+    private HashMap<String, String> customAttributes;
+
     public Animal(String species, String name, int age, double weight, String habitat, String behavior,
                   String dietType, boolean isFertile, boolean isEndangered, String origin, String zooLocation) {
         this.id = currentID++;
@@ -40,9 +36,26 @@ public class Animal {
         this.origin = origin;
         this.zooLocation = zooLocation;
         this.isSick = false; // Default to not sick
+        this.customAttributes = new HashMap<>(); // Initialize the custom attributes
     }
 
-    // Getters and setters
+    // Getters and setters for custom attributes
+    public HashMap<String, String> getCustomAttributes() {
+        return customAttributes;
+    }
+
+    public void setCustomAttributes(HashMap<String, String> customAttributes) {
+        this.customAttributes = customAttributes;
+    }
+
+    public void addCustomAttribute(String key, String value) {
+        customAttributes.put(key, value);
+    }
+
+    public void removeCustomAttribute(String key) {
+        customAttributes.remove(key);
+    }
+
     public int getId() {
         return id;
     }
@@ -51,44 +64,88 @@ public class Animal {
         return species;
     }
 
+    public void setSpecies(String species) {
+        this.species = species;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getAge() {
         return age;
     }
 
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     public double getWeight() {
         return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 
     public String getHabitat() {
         return habitat;
     }
 
+    public void setHabitat(String habitat) {
+        this.habitat = habitat;
+    }
+
     public String getBehavior() {
         return behavior;
+    }
+
+    public void setBehavior(String behavior) {
+        this.behavior = behavior;
     }
 
     public String getDietType() {
         return dietType;
     }
 
+    public void setDietType(String dietType) {
+        this.dietType = dietType;
+    }
+
     public boolean isFertile() {
         return isFertile;
+    }
+
+    public void setIsFertile(boolean fertile) {
+        isFertile = fertile;
     }
 
     public boolean isEndangered() {
         return isEndangered;
     }
 
+    public void setIsEndangered(boolean endangered) {
+        isEndangered = endangered;
+    }
+
     public String getOrigin() {
         return origin;
     }
 
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+
     public String getZooLocation() {
         return zooLocation;
+    }
+
+    public void setZooLocation(String zooLocation) {
+        this.zooLocation = zooLocation;
     }
 
     public boolean isSick() {
@@ -99,72 +156,30 @@ public class Animal {
         isSick = sick;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setSpecies(String species) {
-        this.species = species;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
-    public void setHabitat(String habitat) {
-        this.habitat = habitat;
-    }
-
-    public void setBehavior(String behavior) {
-        this.behavior = behavior;
-    }
-
-    public void setDietType(String dietType) {
-        this.dietType = dietType;
-    }
-
-    public void setIsFertile(boolean isFertile) {
-        this.isFertile = isFertile;
-    }
-
-    public void setIsEndangered(boolean isEndangered) {
-        this.isEndangered = isEndangered;
-    }
-
-    public void setOrigin(String origin) {
-        this.origin = origin;
-    }
-
-    public void setZooLocation(String zooLocation) {
-        this.zooLocation = zooLocation;
-    }
-
-    public void setIsSick(boolean isSick) {
-        this.isSick = isSick;
-    }
-    
     @Override
     public String toString() {
-        return "ID: " + id +
-                ", Species: " + species +
-                ", Name: " + name +
-                ", Age: " + age +
-                ", Weight: " + weight +
-                ", Habitat: " + habitat +
-                ", Behavior: " + behavior +
-                ", Diet Type: " + dietType +
-                ", Fertile: " + isFertile +
-                ", Endangered: " + isEndangered +
-                ", Origin: " + origin +
-                ", Zoo Location: " + zooLocation +
-                ", Sick: " + (isSick ? "Yes" : "No");
+        StringBuilder result = new StringBuilder(
+                "ID: " + id + "\n" +
+                        "Species: " + species + "\n" +
+                        "Name: " + name + "\n" +
+                        "Age: " + age + "\n" +
+                        "Weight: " + weight + " kg\n" +
+                        "Habitat: " + habitat + "\n" +
+                        "Behavior: " + behavior + "\n" +
+                        "Diet Type: " + dietType + "\n" +
+                        "Fertile: " + (isFertile ? "Yes" : "No") + "\n" +
+                        "Endangered: " + (isEndangered ? "Yes" : "No") + "\n" +
+                        "Origin: " + origin + "\n" +
+                        "Zoo Location: " + zooLocation + "\n" +
+                        "Sick: " + (isSick ? "Yes" : "No")
+        );
+
+        // Append custom attributes if they exist
+        if (!customAttributes.isEmpty()) {
+            result.append("\nCustom Attributes:\n");
+            customAttributes.forEach((key, value) -> result.append(key).append(": ").append(value).append("\n"));
+        }
+
+        return result.toString();
     }
 }

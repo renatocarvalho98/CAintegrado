@@ -4,6 +4,8 @@
  */
 package zoo.AnimalSettings;
 
+import zoo.AnimalSettings.Animal;
+
 public class Bird extends Animal {
     private boolean canFly;
 

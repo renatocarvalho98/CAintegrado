@@ -1,45 +1,62 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package zoo.ioutils;
+
 import java.util.Scanner;
 
+/**
+ * Utility class to handle user input operations.
+ */
 public class IOUtils {
+    private final Scanner scanner;
 
-    // Get a valid text input (letters and spaces only)
+    /**
+     * Constructor initializes the Scanner.
+     */
+    public IOUtils() {
+        this.scanner = new Scanner(System.in);
+    }
+
+    /**
+     * Reads a valid text input (letters and spaces only).
+     * @param prompt The prompt message for the user.
+     * @return A valid text input.
+     */
     public String getUserText(String prompt) {
-        Scanner scanner = new Scanner(System.in);
         String input;
         do {
             System.out.println(prompt);
             input = scanner.nextLine().trim();
             if (!input.matches("[a-zA-Z\\s]+")) {
-                System.out.println("Invalid input. Please enter text only (letters and spaces).");
+                System.out.println("Invalid input. Please enter letters and spaces only.");
             } else {
                 return input;
             }
         } while (true);
     }
 
-    // Get a valid text and number input (letters, numbers, and spaces allowed)
+    /**
+     * Reads a valid text input that can include letters, numbers, and spaces.
+     * @param prompt The prompt message for the user.
+     * @return A valid text-and-number input.
+     */
     public String getUserTextWithNumbers(String prompt) {
-        Scanner scanner = new Scanner(System.in);
         String input;
         do {
             System.out.println(prompt);
             input = scanner.nextLine().trim();
             if (!input.matches("[a-zA-Z0-9\\s]+")) {
-                System.out.println("Invalid input. Please enter text and numbers only (letters, numbers, and spaces).");
+                System.out.println("Invalid input. Please enter letters, numbers, and spaces only.");
             } else {
                 return input;
             }
         } while (true);
     }
 
-    // Get a valid integer input
+    /**
+     * Reads a valid integer input.
+     * @param prompt The prompt message for the user.
+     * @return A valid integer value.
+     */
     public int getUserInt(String prompt) {
-        Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println(prompt);
             try {
@@ -50,9 +67,12 @@ public class IOUtils {
         }
     }
 
-    // Get a valid double input
+    /**
+     * Reads a valid double (decimal) input.
+     * @param prompt The prompt message for the user.
+     * @return A valid double value.
+     */
     public double getUserDecimal(String prompt) {
-        Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println(prompt);
             try {
@@ -68,9 +88,12 @@ public class IOUtils {
         }
     }
 
-    // Get a valid boolean input (yes/no)
+    /**
+     * Reads a valid boolean input (yes/no).
+     * @param prompt The prompt message for the user.
+     * @return A boolean value based on user input.
+     */
     public boolean getUserBoolean(String prompt) {
-        Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println(prompt + " (yes/no):");
             String input = scanner.nextLine().trim().toLowerCase();

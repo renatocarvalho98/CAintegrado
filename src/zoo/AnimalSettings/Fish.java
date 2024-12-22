@@ -4,6 +4,8 @@
  */
 package zoo.AnimalSettings;
 
+import zoo.AnimalSettings.Animal;
+
 public class Fish extends Animal {
     private boolean isFreshwater;
 
